@@ -55,7 +55,7 @@ jobs:
         with:
           name: serverless
           path: |
-            ../../serverless-${PACKAGE_VERSION}.tgz
+            serverless-${PACKAGE_VERSION}.tgz
 
   npmPublish:
     name: Publish to npm
