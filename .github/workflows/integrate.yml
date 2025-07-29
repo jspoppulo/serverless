@@ -196,8 +196,9 @@ jobs:
 
       - name: Basic integration tests against standalone binary
         run: npm run integration-test-run-basic
-      - name: Full integration tests against standalone binary
-        run: npm run integration-test-run-all
+      # @jspoppulo: Disabling because we don't want to provide AWS credentials.
+      # - name: Full integration tests against standalone binary
+      #   run: npm run integration-test-run-all
 
       - name: Tag if new version
         run: |
