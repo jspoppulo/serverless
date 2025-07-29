@@ -50,6 +50,13 @@ jobs:
           cd "serverless-${PACKAGE_VERSION}/package"
           script -e -c "npm test -- -b"
 
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: serverless
+          path: |
+            serverless-${PACKAGE_VERSION}
+
   npmPublish:
     name: Publish to npm
     needs: prePublishPackageTest
@@ -72,10 +79,11 @@ jobs:
           key: npm-v16-${{ runner.os }}-refs/heads/main-${{ hashFiles('package.json') }}
 
       - name: Install Node.js and npm
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 16.x
           registry-url: https://npm.pkg.github.com
+          scope: '@jspoppulo'
 
       # Normally we have a guarantee that deps are already there, still it may not be the case when:
       # - `main` build for same commit failed (and we still pushed tag manually)
@@ -94,7 +102,7 @@ jobs:
         run: npm publish
 
       - name: Build standalone artifacts
-        run: npm run pkg:build
+        run: npm run `pkg`:build
 
       - name: Publish release notes
         run: |
