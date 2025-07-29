@@ -39,6 +39,7 @@ describe('test/unit/lib/cli/interactive-setup/dashboard-set-org.test.js', functi
                 'nodejs14.x',
                 'nodejs16.x',
                 'nodejs18.x',
+                'nodejs20.x',
                 'python3.7',
                 'python3.8',
                 'python3.9',
@@ -179,7 +180,7 @@ describe('test/unit/lib/cli/interactive-setup/dashboard-set-org.test.js', functi
               get: async () => {
                 return {
                   awsAccountId: '377024778620',
-                  supportedRuntimes: ['nodejs14.x', 'nodejs16.x', 'nodejs18.x'],
+                  supportedRuntimes: ['nodejs14.x', 'nodejs16.x', 'nodejs18.x', 'nodejs20.x'],
                   supportedRegions: ['us-east-1'],
                 };
               },
