@@ -102,7 +102,7 @@ jobs:
       #   run: npm publish
 
       - name: Build standalone artifacts
-        run: npm run `pkg`:build
+        run: npm run pkg:build
 
       # - name: Publish release notes
       #   run: |
