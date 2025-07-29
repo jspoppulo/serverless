@@ -193,10 +193,10 @@ jobs:
 
       - name: Build standalone artifacts
         run: npm run pkg:build
+
       # @jspoppulo: Disabling because we don't want to provide AWS credentials.
       # - name: Basic integration tests against standalone binary
-      #   run: npm run -test-run-basic
-      # @jspoppulo: Disabling because we don't want to provide AWS credentials.
+      #   run: npm run integration-test-run-basic
       # - name: Full integration tests against standalone binary
       #   run: npm run integration-test-run-all
 
@@ -208,4 +208,3 @@ jobs:
             git tag v$NEW_VERSION
             git push --tags
           fi
-integration
