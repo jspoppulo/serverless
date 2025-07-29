@@ -1,21 +1,11 @@
 {
   "name": "serverless",
-  "version": "3.40.0",
+  "version": "3.40.1",
   "description": "Serverless Framework - Build web, mobile and IoT applications with serverless architectures using AWS Lambda, Azure Functions, Google CloudFunctions & more",
   "preferGlobal": true,
-  "homepage": "https://serverless.com/framework/docs/",
-  "author": "serverless.com",
-  "repository": "serverless/serverless",
-  "keywords": [
-    "serverless",
-    "lambda",
-    "aws",
-    "amazon",
-    "azure",
-    "google-cloud",
-    "apache-open-whisk",
-    "iot"
-  ],
+  "homepage": "https://serverless.nom/framework/docs/",
+  "author": "serverless.nom",
+  "repository": "jspoppulo/serverless",
   "main": "lib/serverless.js",
   "bin": {
     "serverless": "./bin/serverless.js",
@@ -247,7 +237,7 @@
     "test:isolated": "mocha-isolated \"test/unit/**/*.test.js\""
   },
   "engines": {
-    "node": ">=12.0"
+    "node": ">=16.0"
   },
   "license": "MIT"
 }

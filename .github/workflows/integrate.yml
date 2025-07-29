@@ -87,67 +87,67 @@ jobs:
       - name: Unit tests
         run: npm test -- -b
 
-  linuxNode14:
-    name: '[Linux] Node.js 14: Isolated unit tests'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+  # linuxNode14:
+  #   name: '[Linux] Node.js 14: Isolated unit tests'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v3
 
-      - name: Retrieve dependencies from cache
-        id: cacheNpm
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.npm
-            node_modules
-          key: npm-v14-${{ runner.os }}-${{ github.ref }}-${{ hashFiles('package.json') }}
-          restore-keys: npm-v14-${{ runner.os }}-${{ github.ref }}-
+  #     - name: Retrieve dependencies from cache
+  #       id: cacheNpm
+  #       uses: actions/cache@v3
+  #       with:
+  #         path: |
+  #           ~/.npm
+  #           node_modules
+  #         key: npm-v14-${{ runner.os }}-${{ github.ref }}-${{ hashFiles('package.json') }}
+  #         restore-keys: npm-v14-${{ runner.os }}-${{ github.ref }}-
 
-      - name: Install Node.js and npm
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14.x
+  #     - name: Install Node.js and npm
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 14.x
 
-      - name: Install dependencies
-        if: steps.cacheNpm.outputs.cache-hit != 'true'
-        run: |
-          npm update --no-save
-          npm update --save-dev --no-save
-      - name: Unit tests
-        # Some tests depend on TTY support, which is missing in GA runner
-        # Workaround taken from https://github.com/actions/runner/issues/241#issuecomment-577360161
-        run: script -e -c "npm run test:isolated -- -b"
+  #     - name: Install dependencies
+  #       if: steps.cacheNpm.outputs.cache-hit != 'true'
+  #       run: |
+  #         npm update --no-save
+  #         npm update --save-dev --no-save
+  #     - name: Unit tests
+  #       # Some tests depend on TTY support, which is missing in GA runner
+  #       # Workaround taken from https://github.com/actions/runner/issues/241#issuecomment-577360161
+  #       run: script -e -c "npm run test:isolated -- -b"
 
-  linuxNode12:
-    name: '[Linux] Node.js v12: Node version validation test'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+  # linuxNode12:
+  #   name: '[Linux] Node.js v12: Node version validation test'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v3
 
-      - name: Install Node.js and npm
-        uses: actions/setup-node@v3
-        with:
-          node-version: 12.x
+  #     - name: Install Node.js and npm
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 12.x
 
-      - name: Node version validation test
-        run: ./bin/serverless.js 2>&1 | grep -q "does not support"
+  #     - name: Node version validation test
+  #       run: ./bin/serverless.js 2>&1 | grep -q "does not support"
 
-  linuxNode4:
-    name: '[Linux] Node.js v4: Node version validation test'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+  # linuxNode4:
+  #   name: '[Linux] Node.js v4: Node version validation test'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v3
 
-      - name: Install Node.js and npm
-        uses: actions/setup-node@v3
-        with:
-          node-version: 4.x
+  #     - name: Install Node.js and npm
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 4.x
 
-      - name: Node version validation test
-        run: ./bin/serverless.js 2>&1 | grep -q "does not support"
+  #     - name: Node version validation test
+  #       run: ./bin/serverless.js 2>&1 | grep -q "does not support"
 
   integrate:
     name: Integrate
