@@ -6,6 +6,9 @@
   "homepage": "https://serverless.nom/framework/docs/",
   "author": "serverless.nom",
   "repository": "jspoppulo/serverless",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/jspoppulo/serverless.git"
+  },  
   "main": "lib/serverless.js",
   "bin": {
     "serverless": "./bin/serverless.js",
