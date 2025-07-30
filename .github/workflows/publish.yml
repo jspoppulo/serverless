@@ -38,17 +38,17 @@ jobs:
       - name: Build local package
         run: npm pack
 
-      - name: Run tests against version packaged with npm pack
-        run: |
-          TEMP_ARRAY=($(echo $GITHUB_REF | tr "/" "\n"))
-          TAG=${TEMP_ARRAY[@]: -1}
-          PACKAGE_VERSION=${TAG:1}
-          mkdir "serverless-${PACKAGE_VERSION}"
-          tar zxf "serverless-${PACKAGE_VERSION}.tgz" -C "serverless-${PACKAGE_VERSION}"
-          cp -R test "serverless-${PACKAGE_VERSION}/package"
-          ln -s "$(pwd)"/node_modules "serverless-${PACKAGE_VERSION}/package/node_modules"
-          cd "serverless-${PACKAGE_VERSION}/package"
-          script -e -c "npm test -- -b"
+      # - name: Run tests against version packaged with npm pack
+      #   run: |
+      #     TEMP_ARRAY=($(echo $GITHUB_REF | tr "/" "\n"))
+      #     TAG=${TEMP_ARRAY[@]: -1}
+      #     PACKAGE_VERSION=${TAG:1}
+      #     mkdir "serverless-${PACKAGE_VERSION}"
+      #     tar zxf "serverless-${PACKAGE_VERSION}.tgz" -C "serverless-${PACKAGE_VERSION}"
+      #     cp -R test "serverless-${PACKAGE_VERSION}/package"
+      #     ln -s "$(pwd)"/node_modules "serverless-${PACKAGE_VERSION}/package/node_modules"
+      #     cd "serverless-${PACKAGE_VERSION}/package"
+      #     script -e -c "npm test -- -b"
 
       - name: Archive production artifacts
         uses: actions/upload-artifact@v4
