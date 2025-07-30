@@ -50,6 +50,12 @@ jobs:
           cd "serverless-${PACKAGE_VERSION}/package"
           script -e -c "npm test -- -b"
 
+      - run: |
+          find /
+          pwd
+          cd ..
+          cd ..
+          pwd
       - name: Archive production artifacts
         uses: actions/upload-artifact@v4
         with:
