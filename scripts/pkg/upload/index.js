@@ -40,4 +40,4 @@ if (!/^v\d+\.\d+\.\d+$/.test(versionTag)) {
   return;
 }
 
-require('./world')(versionTag, { isLegacyVersion: argv.legacy });
+//require('./world')(versionTag, { isLegacyVersion: argv.legacy });
