@@ -51,17 +51,15 @@ jobs:
       #     script -e -c "npm test -- -b"
 
       - run: |
-          set -x
-          FILE=$(find $HOME -type f -name "serverless-**.t*")
-          echo $HOME
-          echo $FILE
-          set +x
+          TEMP_ARRAY=($(echo $GITHUB_REF | tr "/" "\n"))
+          TAG=${TEMP_ARRAY[@]: -1}
+          PACKAGE_VERSION=${TAG:1}      
       - name: Archive production artifacts
         uses: actions/upload-artifact@v4
         with:
           name: serverless
           path: |
-            $FILE
+            $HOME/serverless/serverless/serverless-${PACKAGE_VERSION}.tgz
 
   npmPublish:
     name: Publish to npm
