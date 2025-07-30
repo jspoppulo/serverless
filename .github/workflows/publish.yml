@@ -56,13 +56,13 @@ jobs:
           TAG=${TEMP_ARRAY[@]: -1}
           PACKAGE_VERSION=${TAG:1}
           pwd
-          find /home/runner/work -type f -name "*.t*" -ls
+          find /home/runner/work -type f \( -name "*.tgz" -or -name "*.tar" \) -ls
       - name: Archive production artifacts
         uses: actions/upload-artifact@v4
         with:
           name: serverless
           path: |
-            $HOME/serverless/serverless/serverless-${PACKAGE_VERSION}.tgz
+            /home/runner/work/serverless/serverless/serverless-3.40.1.tgz
 
   npmPublish:
     name: Publish to npm
